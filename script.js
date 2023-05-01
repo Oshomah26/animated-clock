@@ -1,3 +1,5 @@
+const faceColor = document.getElementById('face-color');
+
 function clock() {
     const now = new Date();
     const canvas = document.getElementById('canvas');
