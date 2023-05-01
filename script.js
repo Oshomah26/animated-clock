@@ -69,8 +69,35 @@ function clock() {
     ctx.stroke();
     ctx.restore();
 
+    // Draw min hand
+    ctx.save();
+    ctx.rotate((Math.PI / 30) * min + (Math.PI / 1800) * sec);
+    ctx.strokeStyle = '#800000';
+    ctx.lineWidth = 9;
+    ctx.beginPath();
+    ctx.moveTo(-20, 0);
+    ctx.lineTo(112, 0);
+    ctx.stroke();
+    ctx.restore();
+
+    // Draw sec hand
+    ctx.save();
+    ctx.rotate((sec * Math.PI / 30));
+    ctx.strokeStyle = '#FF7F50';
+    ctx.fillStyle = '#FF7F50';
+    ctx.lineWidth = 5;
+    ctx.beginPath();
+    ctx.moveTo(-20, 0);
+    ctx.lineTo(100, 0);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(0,0, 10, 0, Math.PI*2, true);
+    ctx.fill();
+    ctx.restore();
 
     ctx.restore(); // Restore the default state
+
+    requestAnimationFrame(clock);
 }
 
-clock();
+requestAnimationFrame(clock);
