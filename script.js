@@ -28,11 +28,47 @@ function clock() {
 
     // Draw hour lines
     ctx.save();
+    for (let i = 0; i < 12; i++){
     ctx.beginPath();
+    ctx.rotate(Math.PI / 6);
     ctx.moveTo(100, 0);
     ctx.lineTo(120, 0);
     ctx.stroke();
+    }
     ctx.restore();
+
+    // Draw minute lines
+    ctx.save();
+    ctx.lineWidth = 4;
+    for (let i = 0; i < 60; i++){
+        if(1 % 5 !== 0){
+        ctx.beginPath();
+        ctx.moveTo(117, 0);
+        ctx.lineTo(120, 0);
+        ctx.stroke();
+        }
+        ctx.rotate(Math.PI / 30);
+    }
+    ctx.restore();
+
+    // Get current time
+    const hr = now.getHours() % 12;
+    const min = now.getMinutes();
+    const sec = now.getSeconds();
+
+    console.log(`${hr}:${min}:${sec}`);
+
+    // Draw hour hand
+    ctx.save();
+    ctx.rotate((Math.PI / 6) * hr + (Math.PI / 360) * min + (Math.PI / 21600) * sec);
+    ctx.strokeStyle = '#800000';
+    ctx.lineWidth = 14;
+    ctx.beginPath();
+    ctx.moveTo(-20, 0);
+    ctx.lineTo(80, 0);
+    ctx.stroke();
+    ctx.restore();
+
 
     ctx.restore(); // Restore the default state
 }
