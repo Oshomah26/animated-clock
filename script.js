@@ -27,6 +27,7 @@ function clock() {
     ctx.beginPath();
     ctx.lineWidth = 14;
     ctx.strokeStyle = borderColor.value; 
+    ctx.fillStyle = faceColor.value;
     ctx.arc(0, 0, 142, 0, Math.PI * 2, true);
     ctx.stroke();
     ctx.fill();
@@ -34,6 +35,7 @@ function clock() {
 
     // Draw hour lines
     ctx.save();
+    ctx.strokeStyle = lineColor.value;
     for (let i = 0; i < 12; i++){
     ctx.beginPath();
     ctx.rotate(Math.PI / 6);
@@ -45,6 +47,7 @@ function clock() {
 
     // Draw minute lines
     ctx.save();
+    ctx.strokeStyle = lineColor.value;
     ctx.lineWidth = 4;
     for (let i = 0; i < 60; i++){
         if(1 % 5 !== 0){
@@ -67,7 +70,7 @@ function clock() {
     // Draw hour hand
     ctx.save();
     ctx.rotate((Math.PI / 6) * hr + (Math.PI / 360) * min + (Math.PI / 21600) * sec);
-    ctx.strokeStyle = '#800000';
+    ctx.strokeStyle = largeHandColor.value;
     ctx.lineWidth = 14;
     ctx.beginPath();
     ctx.moveTo(-20, 0);
@@ -89,8 +92,8 @@ function clock() {
     // Draw sec hand
     ctx.save();
     ctx.rotate((sec * Math.PI / 30));
-    ctx.strokeStyle = '#FF7F50';
-    ctx.fillStyle = '#FF7F50';
+    ctx.strokeStyle = secondHandColor.value;
+    ctx.fillStyle = secondHandColor.value;
     ctx.lineWidth = 5;
     ctx.beginPath();
     ctx.moveTo(-20, 0);
