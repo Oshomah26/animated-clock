@@ -3,10 +3,11 @@ const borderColor = document.getElementById('border-color');
 const lineColor = document.getElementById('line-color');
 const largeHandColor = document.getElementById('large-hand-color');
 const secondHandColor = document.getElementById('second-hand-color');
+const canvas = document.getElementById('canvas');
+
 
 function clock() {
     const now = new Date();
-    const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
 
     // Setup canvas
@@ -81,7 +82,7 @@ function clock() {
     // Draw min hand
     ctx.save();
     ctx.rotate((Math.PI / 30) * min + (Math.PI / 1800) * sec);
-    ctx.strokeStyle = '#800000';
+    ctx.strokeStyle = largeHandColor.value;
     ctx.lineWidth = 9;
     ctx.beginPath();
     ctx.moveTo(-20, 0);
@@ -110,3 +111,11 @@ function clock() {
 }
 
 requestAnimationFrame(clock);
+
+document.getElementById('save-btn').addEventListener('click', ()=>{
+    const dataURL = canvas.toDataURL('image/png');
+    const link = document.createElement('a');
+    link.download = 'clock.png';
+    link.href = dataURL;
+    link.click();
+})
