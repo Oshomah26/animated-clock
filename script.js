@@ -27,8 +27,8 @@ function clock() {
     ctx.save();
     ctx.beginPath();
     ctx.lineWidth = 14;
-    ctx.strokeStyle = '#FF8457'; 
-    ctx.fillStyle = '#FF8457';
+    ctx.strokeStyle = borderColor.value;; 
+    ctx.fillStyle = borderColor.value;;
     ctx.arc(-10, -20, 142, 0, Math.PI * 2, true);
     ctx.stroke();
     ctx.fill();
