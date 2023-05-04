@@ -23,16 +23,27 @@ function clock() {
     ctx.lineWidth = 5;
     ctx.lineCap = 'round';
 
-    // Draw clock face and border
+    // Draw clock shadow
     ctx.save();
     ctx.beginPath();
     ctx.lineWidth = 14;
-    ctx.strokeStyle = borderColor.value; 
-    ctx.fillStyle = faceColor.value;
-    ctx.arc(0, 0, 142, 0, Math.PI * 2, true);
+    ctx.strokeStyle = '#FF8457'; 
+    ctx.fillStyle = '#FF8457';
+    ctx.arc(-10, -20, 142, 0, Math.PI * 2, true);
     ctx.stroke();
     ctx.fill();
     ctx.restore();
+
+     // Draw clock face and border
+     ctx.save();
+     ctx.beginPath();
+     ctx.lineWidth = 14;
+     ctx.strokeStyle = borderColor.value; 
+     ctx.fillStyle = faceColor.value;
+     ctx.arc(0, 0, 142, 0, Math.PI * 2, true);
+     ctx.stroke();
+     ctx.fill();
+     ctx.restore();
 
     // Draw hour lines
     ctx.save();
@@ -66,7 +77,7 @@ function clock() {
     const min = now.getMinutes();
     const sec = now.getSeconds();
 
-    console.log(`${hr}:${min}:${sec}`);
+    // console.log(`${hr}:${min}:${sec}`);
 
     // Draw hour hand
     ctx.save();
@@ -119,3 +130,4 @@ document.getElementById('save-btn').addEventListener('click', ()=>{
     link.href = dataURL;
     link.click();
 })
+
